@@ -11,6 +11,14 @@ def d_relu(x):
     x[x>0] = 1
     return x
 
+def leaky_relu(x, a):
+    x[x<0] = a*x
+    return x
+
+def d_leaky_relu(x, a):
+    x[x<0] = -a
+    x[x>0] = 1
+
 activations = {
     "linear": [
         lambda x: x,
@@ -23,6 +31,10 @@ activations = {
     "relu": [
         relu,
         d_relu
+    ],
+    "leaky_relu": [
+        leaky_relu,
+        d_leaky_relu
     ]
 }
 
