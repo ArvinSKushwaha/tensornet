@@ -5,6 +5,8 @@ setup(
     version="0.0.0",
     author="Arvin Singh Kushwaha",
     author_email="arvin.singhk@gmail.com",
-    packages=find_packages(),
-    install_requires=["numpy"]
+    package_dir={"": "src"},
+    packages=find_packages(where="src"),
+    setup_requires=["numpy"],
+    install_requires=["numpy"],
 )

@@ -1,3 +1,4 @@
+README.md
 setup.py
 tensornet/__init__.py
 tensornet.egg-info/PKG-INFO

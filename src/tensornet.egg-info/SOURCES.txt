@@ -1,0 +1,11 @@
+README.md
+setup.py
+src/tensornet/__init__.py
+src/tensornet.egg-info/PKG-INFO
+src/tensornet.egg-info/SOURCES.txt
+src/tensornet.egg-info/dependency_links.txt
+src/tensornet.egg-info/requires.txt
+src/tensornet.egg-info/top_level.txt
+src/tensornet/core/__init__.py
+src/tensornet/core/activations.py
+src/tensornet/core/layer.py
