@@ -10,4 +10,5 @@ src/tensornet.egg-info/top_level.txt
 src/tensornet/core/__init__.py
 src/tensornet/core/activations.py
 src/tensornet/core/layers.py
+src/tensornet/core/losses.py
 src/tensornet/core/models.py

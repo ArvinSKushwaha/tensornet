@@ -1,5 +1,5 @@
 from .. import *
-import numpy as np
+import cupy as np
 
 d = Model([
     Dense(128, 784),

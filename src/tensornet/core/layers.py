@@ -24,7 +24,7 @@ class Dense(Layer):
         super().__init__()
         self.output_size = output_dims
         self.input_size = input_dims
-        self.weights = np.random.randn(input_dims, output_dims) * np.sqrt(2/(output_dims+input_dims))
+        self.weights = np.random.randn(input_dims, output_dims) * np.sqrt(2/(input_dims))
         self.bias = np.random.randn(output_dims)
     
     def forward(self, x):

@@ -7,6 +7,6 @@ setup(
     author_email="arvin.singhk@gmail.com",
     package_dir={"": "src"},
     packages=find_packages(where="src"),
-    setup_requires=["numpy"],
-    install_requires=["numpy"],
+    setup_requires=["cupy"],
+    install_requires=["cupy"],
 )

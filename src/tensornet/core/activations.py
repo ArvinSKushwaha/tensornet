@@ -1,5 +1,6 @@
 import cupy as np
 from .layers import Layer
+import numba as nb
 
 
 def relu(x):
@@ -13,6 +14,30 @@ def d_relu(x):
 
 def expit(x):
     return 1/(np.exp(-x)+1)
+
+@nb.jit(parallel=True, forceobj=True)
+def stablesoftmax(x):
+    """Compute the softmax of vector x in a numerically stable way."""
+    assert x.ndim == 2
+    classes = x.shape[1]
+    x = x - np.mean(x, keepdims=True)
+    x = x/np.std(x, keepdims=True)
+    x = np.exp(x)
+    x = x / np.sum(x, -1, keepdims=True)
+    
+    return x
+
+@nb.jit(parallel=True, forceobj=True)
+def softmax_derivative(x):
+    assert x.ndim == 2
+    classes = x.shape[1]
+    x = x - np.mean(x, keepdims=True)
+    x = x/np.std(x, keepdims=True)
+    out = np.zeros((x.shape[0], classes, classes))
+    for i in range(classes):
+        for j in range(classes):
+            out[:, i, j] = x[:, i] * (1 - x[:, i]) if (i == j) else -x[:, i]*x[:, j]
+    return out
 
 activations = {
     "linear": [
@@ -30,6 +55,10 @@ activations = {
     "relu": [
         relu,
         d_relu
+    ],
+    "softmax": [
+        stablesoftmax,
+        softmax_derivative   
     ]
 }
 
